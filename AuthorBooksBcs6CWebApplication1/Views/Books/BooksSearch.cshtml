@@ -1,0 +1,144 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+ 
+@model IPagedList<AuthorBooksBcs6CWebApplication1.Models.Book>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BooksSearch</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    @*//This is for search through search box*@
+
+    @using (Html.BeginForm("BooksSearch", "Books", FormMethod.Get))
+    {
+
+        <b>Search By:</b>
+        @Html.RadioButton("SearchBy", "Name",true)<text>Name</text>
+        @Html.RadioButton("SearchBy", "Gender")<text>Gender</text>
+
+        <br><b>Search:</b>
+        @Html.TextBox("cont")
+        <input type="submit" value="Submit">
+    }
+
+    @*//This is for search through dropdown menu*@
+    @*@using (Html.BeginForm("BooksSearch", "Books", FormMethod.Get))
+        {
+                <table>
+
+                    <tr>
+                        <td>Select Category</td>
+                        <td>
+                            @Html.DropDownList("cattb", (List<SelectListItem>)ViewBag.Cat, "Select")
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Submit"></td>
+
+                    </tr>
+                </table>
+        }*@
+
+
+
+
+
+    @if (Model.Count() == 0)
+    {
+        <b>No Records</b>
+    }
+    else
+    {
+
+        <table border="1" class="table">
+            <tr>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.First().bid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().publishyear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().aid)
+                </th>
+
+                        <th>
+                    @Html.DisplayNameFor(model => model.First().country)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.First().name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().email)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+             <tr>
+                    @*<td>
+                    @Html.DisplayFor(modelItem => item.bid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.publishyear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.aid)
+                </td>
+
+                    <td>
+                    @Html.DisplayFor(modelItem => item.country)
+                </td>*@
+                    <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+
+            @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+        </tr>
+            }
+
+        </table>
+    }
+    @Html.PagedListPager(Model, page => Url.Action("BooksSearch", new { page, cont = Request.QueryString["cont"], SearchBy = Request.QueryString["SearchBy"] }), new PagedListRenderOptions() { DisplayItemSliceAndTotal = true })
+    
+    
+
+</body>
+</html>

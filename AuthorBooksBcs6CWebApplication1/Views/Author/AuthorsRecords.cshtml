@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AuthorBooksBcs6CWebApplication1.Models.Author>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AuthorsRecords</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "authorEntry")
+    </p>
+    <table border="1" class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.aid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            
+            <th>Actions links</th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.aid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            
+            <td>
+                
+                @Html.ActionLink("Edit Author", "Edit", new {  id=item.aid }) |
+                @Html.ActionLink("Author Details", "Details", new {  id=item.aid }) |
+                @Html.ActionLink("Delete Author", "Delete", new {  id=item.aid })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

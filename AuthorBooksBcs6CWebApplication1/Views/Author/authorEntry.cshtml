@@ -1,0 +1,56 @@
+﻿@model AuthorBooksBcs6CWebApplication1.Models.Author
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>authorEntry</title>
+</head>
+<body>
+    <div>
+        <h1> Author Enrty Form</h1>
+        @using (Html.BeginForm("authorEntry", "Author", FormMethod.Post))
+        {
+    <table>
+        <tr>
+            <td>Author Name</td>
+            <td>
+                @Html.TextBoxFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>Country</td>
+            <td>
+                @Html.DropDownListFor(model => model.Country, (List<SelectListItem>)ViewBag.Countries, "Select")
+
+            </td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                @Html.RadioButtonFor(model => model.Gender, "M")Male
+                @Html.RadioButtonFor(model => model.Gender, "F")Female
+            </td>
+        </tr>
+
+        <tr>
+
+            <td>
+                @Html.CheckBoxFor(model => model.Married, true)
+            </td>
+            <td>Married?</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+    </table>}
+    </div>
+</body>
+</html>

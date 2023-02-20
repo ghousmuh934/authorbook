@@ -1,0 +1,24 @@
+﻿@model AuthorBooksBcs6CWebApplication1.Models.Author
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AuthorDetails</title>
+</head>
+<body>
+    <h2>Author Detail</h2>
+    <div>
+        <b> Author Id:</b>@Model.aid <br />
+        <b> Author Name:</b> @Model.Name <br />
+        <b> Author Country:</b>@Model.Country <br />
+        <b> Author Gender:</b>@Model.Gender <br />
+        <b> Married? :</b>@Model.Married
+    </div>
+</body>
+</html>

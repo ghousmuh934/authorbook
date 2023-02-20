@@ -1,0 +1,72 @@
+﻿@model IEnumerable<AuthorBooksBcs6CWebApplication1.Models.Book>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BooksRecords</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "BookEntry")
+    </p>
+    @using (Html.BeginForm("BooksRecords", "Book",FormMethod.Post))
+    {
+        <b>Enter Category:</b>
+        @Html.TextBox("cattb")
+        <input type="submit" value="Submit">
+    }
+        <table border="1" class="table">
+            <tr>
+                <th>
+                   Book ID
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>
+                    Publish Year
+                </th>
+                <th>
+                    Author Id
+                </th>
+                <th>Action Links</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.bid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.publishyear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.aid)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+            }
+
+        </table>
+    </body>
+</html>

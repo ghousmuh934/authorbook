@@ -1,0 +1,38 @@
+﻿@model List<AuthorBooksBcs6CWebApplication1.Models.Author>
+@{ Layout = null; }
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title> Model List  Demo </title>
+
+</head>
+
+<body>
+
+    <h1> Authors List</h1>
+
+    <table border="1">
+        <tr>
+            <th>Author Id</th>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Gender</th>
+        </tr>
+
+        @foreach (var aut in Model)
+        {
+<tr>
+    <td>@aut.aid</td>
+    <td>@aut.Name</td>
+    <td>@aut.Country</td>
+    <td>@aut.Gender</td>
+</tr>}
+
+    </table>
+
+</body>
+
+</html>
